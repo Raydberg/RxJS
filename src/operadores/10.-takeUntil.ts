@@ -1,4 +1,4 @@
-import { fromEvent, interval, skip, takeUntil } from "rxjs"
+import { fromEvent, interval, takeUntil } from "rxjs"
 
 const boton = document.createElement("button")
 
@@ -6,11 +6,7 @@ boton.innerHTML = "Detener Timer"
 document.querySelector("body")?.append(boton)
 
 const counter$ = interval(1000)
-const clickBtn$ = fromEvent(boton, "click").pipe(
-    // Cuantas emiciones de este evento 
-    // me las quiero saltar
-    skip(1)
-)
+const clickBtn$ = fromEvent(boton, "click")
 
 
 counter$
